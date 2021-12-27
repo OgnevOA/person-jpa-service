@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "5cad0de5-4c07-49a3-be67-8b3698e4ba9e",
+		"name": "Person",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete person",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"1000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete person",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:21:33 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1000,\n    \"name\": \"John\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Lod\",\n        \"street\": \"Lenin\",\n        \"building\": 20\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Register person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1000,\r\n    \"name\": \"John\",\r\n    \"birthDate\": \"1991-05-01\",\r\n    \"address\": {\r\n        \"city\": \"Lod\",\r\n        \"street\": \"Lenin\",\r\n        \"building\": 20\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find person by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"1000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find person by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"1000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:22:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1000,\n    \"name\": \"John\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Lod\",\n        \"street\": \"Lenin\",\n        \"building\": 20\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Find users by City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/city/Lod",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"city",
+						"Lod"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find users by City",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/city/Lod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"city",
+								"Lod"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:22:59 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 6000,\n        \"name\": \"John\",\n        \"birthDate\": \"1972-10-20\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 1000,\n        \"name\": \"John\",\n        \"birthDate\": \"1991-05-01\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Find users by Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/name/John",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"name",
+						"John"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find users by Name",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/name/John",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"name",
+								"John"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:23:32 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 5000,\n        \"name\": \"John\",\n        \"birthDate\": \"1972-10-20\",\n        \"address\": {\n            \"city\": \"Rehovot\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 6000,\n        \"name\": \"John\",\n        \"birthDate\": \"1972-10-20\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 1000,\n        \"name\": \"John\",\n        \"birthDate\": \"1991-05-01\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "FInd persons by age period",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/age/30/50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"age",
+						"30",
+						"50"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FInd persons by age period",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/age/30/50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"age",
+								"30",
+								"50"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:24:06 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2000,\n        \"name\": \"Peter\",\n        \"birthDate\": \"1990-05-19\",\n        \"address\": {\n            \"city\": \"Beer-Sheba\",\n            \"street\": \"Sokolov\",\n            \"building\": 10\n        }\n    },\n    {\n        \"id\": 3000,\n        \"name\": \"Mathew\",\n        \"birthDate\": \"1980-11-02\",\n        \"address\": {\n            \"city\": \"Beer-Sheba\",\n            \"street\": \"Sokolov\",\n            \"building\": 50\n        }\n    },\n    {\n        \"id\": 4000,\n        \"name\": \"Alison\",\n        \"birthDate\": \"1982-10-20\",\n        \"address\": {\n            \"city\": \"Beer-Sheba\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 5000,\n        \"name\": \"John\",\n        \"birthDate\": \"1972-10-20\",\n        \"address\": {\n            \"city\": \"Rehovot\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 6000,\n        \"name\": \"John\",\n        \"birthDate\": \"1972-10-20\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    },\n    {\n        \"id\": 1000,\n        \"name\": \"John\",\n        \"birthDate\": \"1991-05-01\",\n        \"address\": {\n            \"city\": \"Lod\",\n            \"street\": \"Lenin\",\n            \"building\": 20\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Update person address",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"Moscow\",\r\n    \"street\": \"Lenin sq\",\r\n    \"building\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/person/address/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"address",
+						"1000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update person address",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"Moscow\",\r\n    \"street\": \"Lenin sq\",\r\n    \"building\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/address/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"address",
+								"1000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:24:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1000,\n    \"name\": \"John\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Moscow\",\n        \"street\": \"Lenin sq\",\n        \"building\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update user name",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person/id/1000/name/Yana",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"id",
+						"1000",
+						"name",
+						"Yana"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update user name",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/id/1000/name/Yana",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"id",
+								"1000",
+								"name",
+								"Yana"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Dec 2021 17:25:40 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1000,\n    \"name\": \"Yana\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Moscow\",\n        \"street\": \"Lenin sq\",\n        \"building\": 1\n    }\n}"
+				}
+			]
+		}
+	]
+}
