@@ -43,6 +43,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public PersonDto removePerson(Integer id) {
 		PersonDto person = findPersonById(id);
 		personRepository.deleteById(id);
@@ -50,6 +51,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public PersonDto updatePersonName(Integer id, String name) {
 		Person person = personRepository.getById(id);
 		person.setName(name);
@@ -58,6 +60,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public PersonDto updatePersonAddress(Integer id, AddressDto address) {
 		Person person = personRepository.getById(id);
 		person.setAddress(modelMapper.map(address, Address.class));
@@ -74,16 +77,16 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Iterable<PersonDto> findPersonsBetweenAge(Integer minAge, Integer maxAge) {
-		LocalDate min = LocalDate.now().minusYears(minAge);
-		LocalDate max = LocalDate.now().minusYears(maxAge);
-		return personRepository.findByBirthDateBetween(max, min).stream()
+		LocalDate from = LocalDate.now().minusYears(minAge);
+		LocalDate to = LocalDate.now().minusYears(maxAge);
+		return personRepository.findByBirthDateBetween(to, from).stream()
 								.map(p -> modelMapper.map(p, PersonDto.class))
 								.collect(Collectors.toList());
 	}
 
 	@Override
 	public Iterable<PersonDto> findPersonsByCity(String city) {
-		return personRepository.findPersonsByAddress_City(city).stream()
+		return personRepository.findPersonsByAddressCity(city).stream()
 								.map(p -> modelMapper.map(p, PersonDto.class))
 								.collect(Collectors.toList());
 	}

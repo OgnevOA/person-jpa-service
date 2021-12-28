@@ -306,12 +306,12 @@
 			]
 		},
 		{
-			"name": "FInd persons by age period",
+			"name": "Find persons by age period",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/person/age/30/50",
+					"raw": "http://localhost:8080/person/ages/30/50",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -319,7 +319,7 @@
 					"port": "8080",
 					"path": [
 						"person",
-						"age",
+						"ages",
 						"30",
 						"50"
 					]
@@ -391,7 +391,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/person/address/1000",
+					"raw": "http://localhost:8080/person/1000/address",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -399,8 +399,8 @@
 					"port": "8080",
 					"path": [
 						"person",
-						"address",
-						"1000"
+						"1000",
+						"address"
 					]
 				}
 			},
@@ -469,7 +469,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/person/id/1000/name/Yana",
+					"raw": "http://localhost:8080/person/1000/name/Yakov",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -477,10 +477,9 @@
 					"port": "8080",
 					"path": [
 						"person",
-						"id",
 						"1000",
 						"name",
-						"Yana"
+						"Yakov"
 					]
 				}
 			},
@@ -491,7 +490,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/person/id/1000/name/Yana",
+							"raw": "http://localhost:8080/person/1000/name/Yakov",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -499,10 +498,9 @@
 							"port": "8080",
 							"path": [
 								"person",
-								"id",
 								"1000",
 								"name",
-								"Yana"
+								"Yakov"
 							]
 						}
 					},
@@ -520,7 +518,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 27 Dec 2021 17:25:40 GMT"
+							"value": "Tue, 28 Dec 2021 08:49:33 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -532,7 +530,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 1000,\n    \"name\": \"Yana\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Moscow\",\n        \"street\": \"Lenin sq\",\n        \"building\": 1\n    }\n}"
+					"body": "{\n    \"id\": 1000,\n    \"name\": \"Yakov\",\n    \"birthDate\": \"1991-05-01\",\n    \"address\": {\n        \"city\": \"Moscow\",\n        \"street\": \"Lenin sq\",\n        \"building\": 1\n    }\n}"
 				}
 			]
 		}

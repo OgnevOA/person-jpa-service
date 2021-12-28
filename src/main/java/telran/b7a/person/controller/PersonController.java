@@ -39,12 +39,12 @@ public class PersonController {
 		return personService.removePerson(id);
 	}
 	
-	@PutMapping("/id/{id}/name/{name}")
+	@PutMapping("/{id}/name/{name}")
 	public PersonDto updateName(@PathVariable Integer id,@PathVariable String name) {
 		return personService.updatePersonName(id, name);
 	}
 	
-	@PutMapping("/address/{id}")
+	@PutMapping("/{id}/address")
 	public PersonDto updateAddress(@PathVariable Integer id,@RequestBody AddressDto address) {
 		return personService.updatePersonAddress(id, address);
 	}
@@ -54,7 +54,7 @@ public class PersonController {
 		return personService.findPersonsByName(name);
 	}
 	
-	@GetMapping("/age/{min}/{max}")
+	@GetMapping("/ages/{min}/{max}")
 	public Iterable<PersonDto> findByAge(@PathVariable Integer min,@PathVariable Integer max) {
 		return personService.findPersonsBetweenAge(min, max);
 	}

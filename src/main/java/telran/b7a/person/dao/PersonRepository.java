@@ -12,6 +12,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
 	public List<Person> findByBirthDateBetween(LocalDate from, LocalDate to);
 
-	public List<Person> findPersonsByAddress_City(String city);
+	public List<Person> findPersonsByAddressCity(String city);
 
 }
