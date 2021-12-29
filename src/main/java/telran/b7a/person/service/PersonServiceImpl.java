@@ -10,13 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import telran.b7a.person.dao.PersonRepository;
 import telran.b7a.person.dto.AddressDto;
+import telran.b7a.person.dto.CityPopulationDto;
 import telran.b7a.person.dto.PersonDto;
 import telran.b7a.person.dto.exceptions.PersonNotFoundException;
+import telran.b7a.person.dto.exceptions.UnknownPersonTypeException;
 import telran.b7a.person.model.Address;
 import telran.b7a.person.model.Person;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+	private static final String MODEL_PACKAGE = "telran.b7a.person.model.";
+	private static final String DTO_SUFFIX = "Dto";
+	private static final String DTO_PACKAGE = "telran.b7a.person.dto.";
 	PersonRepository personRepository;
 	ModelMapper modelMapper;
 
@@ -32,14 +37,40 @@ public class PersonServiceImpl implements PersonService {
 		if (personRepository.existsById(personDto.getId())) {
 			return false;
 		}
-		personRepository.save(modelMapper.map(personDto, Person.class));
+		personRepository.save(modelMapper.map(personDto, getModelClass(personDto)));
 		return true;
+	}
+
+	@SuppressWarnings("unchecked")
+	private Class<? extends Person> getModelClass(PersonDto personDto) {
+		String modelClassName = personDto.getClass().getSimpleName();
+		modelClassName = modelClassName.substring(0, modelClassName.length() - 3);
+		try {
+			Class<? extends Person> clazz = (Class<? extends Person>) Class.forName(MODEL_PACKAGE + modelClassName);
+			return clazz;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new UnknownPersonTypeException();
+		}
 	}
 
 	@Override
 	public PersonDto findPersonById(Integer id) {
 		Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException());
-		return modelMapper.map(person, PersonDto.class);
+		return modelMapper.map(person, getDtoClass(person));
+	}
+
+	@SuppressWarnings("unchecked")
+	private Class<? extends PersonDto> getDtoClass(Person person) {
+		String dtoClassName = person.getClass().getSimpleName();
+		dtoClassName = dtoClassName + DTO_SUFFIX;
+		try {
+			Class<? extends PersonDto> clazz = (Class<? extends PersonDto>) Class.forName(DTO_PACKAGE + dtoClassName);
+			return clazz;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new UnknownPersonTypeException();
+		}
 	}
 
 	@Override
@@ -55,8 +86,8 @@ public class PersonServiceImpl implements PersonService {
 	public PersonDto updatePersonName(Integer id, String name) {
 		Person person = personRepository.getById(id);
 		person.setName(name);
-		personRepository.save(person);
-		return modelMapper.map(person, PersonDto.class);
+//		personRepository.save(person);
+		return modelMapper.map(person, getDtoClass(person));
 	}
 
 	@Override
@@ -64,31 +95,50 @@ public class PersonServiceImpl implements PersonService {
 	public PersonDto updatePersonAddress(Integer id, AddressDto address) {
 		Person person = personRepository.getById(id);
 		person.setAddress(modelMapper.map(address, Address.class));
-		personRepository.save(person); 
-		return modelMapper.map(person, PersonDto.class);
+		personRepository.save(person);
+		return modelMapper.map(person, getDtoClass(person));
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Iterable<PersonDto> findPersonsByName(String name) {
-		return personRepository.findPersonsByName(name).stream()
-								.map(p -> modelMapper.map(p, PersonDto.class))
-								.collect(Collectors.toList());
+		return personRepository.findByName(name).map(p -> modelMapper.map(p, getDtoClass(p)))
+				.collect(Collectors.toList());
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Iterable<PersonDto> findPersonsBetweenAge(Integer minAge, Integer maxAge) {
 		LocalDate from = LocalDate.now().minusYears(minAge);
 		LocalDate to = LocalDate.now().minusYears(maxAge);
-		return personRepository.findByBirthDateBetween(to, from).stream()
-								.map(p -> modelMapper.map(p, PersonDto.class))
-								.collect(Collectors.toList());
+		return personRepository.findByBirthDateBetween(to, from).map(p -> modelMapper.map(p, getDtoClass(p)))
+				.collect(Collectors.toList());
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Iterable<PersonDto> findPersonsByCity(String city) {
-		return personRepository.findPersonsByAddressCity(city).stream()
-								.map(p -> modelMapper.map(p, PersonDto.class))
-								.collect(Collectors.toList());
+		return personRepository.findPersonsByCity(city).map(p -> modelMapper.map(p, getDtoClass(p)))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Iterable<CityPopulationDto> getCityPopulation() {
+		return personRepository.getCityPopulation();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<PersonDto> findEmployeeBySalary(int min, int max) {
+		return personRepository.findEmployeesBySalaryRange(min, max).map(p -> modelMapper.map(p, getDtoClass(p)))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<PersonDto> getChildren() {
+		return personRepository.getChildren().map(p -> modelMapper.map(p, getDtoClass(p)))
+				.collect(Collectors.toList());
 	}
 
 }
